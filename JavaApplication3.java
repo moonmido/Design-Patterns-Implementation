@@ -10,6 +10,9 @@ import javaapplication3.SingeltonDP.Connection;
 import javaapplication3.CompositeDP.Composite;
 import javaapplication3.CompositeDP.Leaf;
 import javaapplication3.CompositeDP.Component;
+import javaapplication3.StrategyDP.ConcreteStrategies.CreditCardPayement;
+import javaapplication3.StrategyDP.ConcreteStrategies.PaypalStrategy;
+import javaapplication3.StrategyDP.Context.PaymentService;
 
 /**
  *
@@ -21,7 +24,8 @@ public class JavaApplication3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
+
         //COMPOSITE
           System.out.println("--------COMPOSITE DESIGN PATTERN -----------------");
 
@@ -69,10 +73,27 @@ public class JavaApplication3 {
         c1.subscribe(s2);
         c1.subscribe(s3);
 
+
         c1.uploadVideo("How To Be Like LINUS !!");
-            
+
+
+        System.out.println("--------STRATEGY DESIGN PATTERN -----------------");
+
+
+
+        // STRATEGY
+        PaymentService context = new PaymentService();
+        context.setPayementStrategy(new PaypalStrategy("mido"));
+        context.executeStrategy(50);
+
+        context.setPayementStrategy(new CreditCardPayement("51561541651"));
+        context.executeStrategy(12);
+
     }
-    
+
+
+
+
  
     
 }
